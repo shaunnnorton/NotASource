@@ -34,4 +34,4 @@ class UtilsTests(unittest.TestCase):
     def test_fetch_page(self):
         link = "https://en.wikipedia.org/wiki/Wiki"
         response = fetch.get_page(link)
-        self.assertIn("Ward Cunningham", response)
+        self.assertIn("Ward Cunningham", response.text)
