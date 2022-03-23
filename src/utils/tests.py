@@ -18,10 +18,18 @@ class UtilsTests(unittest.TestCase):
         self.app = app.test_client()
 
     def test_real_link_invalid(self):
-        """Tests that an invalid wikipedia link throws an error."""
-        link = "http://google.com"
+        """Tests that an invalid wikipedia link retruns False."""
+        link = "https://en.wikipedia.org/wiki/Dgae"
         response = fetch.test_link(link)
-        self.assertFalse(response)
+        print(response)
+        self.assertFalse(response[0])
+
+    def test_real_link_valid(self):
+        """Tests that a valid wikipedia link returns True."""
+        link = "https://en.wikipedia.org/wiki/Dog"
+        response = fetch.test_link(link)
+        print(response)
+        self.assertTrue(response[0])
 
     def test_fetch_page(self):
         link = "https://en.wikipedia.org/wiki/Wiki"
