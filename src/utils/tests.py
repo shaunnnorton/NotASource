@@ -32,6 +32,17 @@ class UtilsTests(unittest.TestCase):
         self.assertTrue(response[0])
 
     def test_fetch_page(self):
+        """Tests thats when passed a link the respnse contains intended information"""
         link = "https://en.wikipedia.org/wiki/Wiki"
         response = fetch.get_page(link)
         self.assertIn("Ward Cunningham", response.text)
+
+    def test_strip_page(self):
+        """Tests that link, meta, and script tags are stripped from the loaded page"""
+        link = "https://en.wikipedia.org/wiki/Dog"
+        response = fetch.get_page(link)
+        stripped = fetch.strip_page(response.text)
+        # print(stripped)
+        self.assertNotIn("<link>",stripped)
+        self.assertNotIn("<meta>",stripped)
+        self.assertNotIn("<script>",stripped)
