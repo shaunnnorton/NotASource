@@ -46,3 +46,16 @@ class UtilsTests(unittest.TestCase):
         self.assertNotIn("<link>",stripped)
         self.assertNotIn("<meta>",stripped)
         self.assertNotIn("<script>",stripped)
+
+    def test_fetch_page_nolink(self):
+        """Tests that provided a term a wikipedia page will appear"""
+        term = "banana"
+        expected = "https://en.wikipedia.org/wiki/banana"
+        self.assertEqual(fetch.get_page_no_link(term),expected)
+
+    def test_check_if_link(self):
+        """Tests that a provided text is a link"""
+        term1 = "dog"
+        term2 = "https://en.wikipedia.org/wiki/Dog"
+        self.assertFalse(fetch.check_if_link(term1))
+        self.assertTrue(fetch.check_if_link(term2))

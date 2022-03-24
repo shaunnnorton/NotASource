@@ -10,6 +10,7 @@ def MainPage():
 
 @main.route("/wiki", methods=["GET","POST"])
 def WikiPage():
+    """Route that displays a wikipedia page and all sources on it."""
     data = {
         "body":"<h1>Hello World</h1>"
     }
