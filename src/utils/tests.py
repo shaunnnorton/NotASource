@@ -1,16 +1,15 @@
-from multiprocessing.sharedctypes import Value
-from re import T
+from inspect import classify_class_attrs
 import unittest
 
 from src import app
-from src.utils import fetch
+from src.utils import fetch, process
 
 #######################################################
 #                       Tests                         #
 #######################################################
 
-class UtilsTests(unittest.TestCase):
-    "Tests functions contained in Utils"
+class UtilsTestsFetch(unittest.TestCase):
+    "Tests functions contained in Utils.fetch"
     def setUp(self) -> None:
         """Executed prior to each test"""
         app.config["TESTING"] = True
@@ -59,3 +58,15 @@ class UtilsTests(unittest.TestCase):
         term2 = "https://en.wikipedia.org/wiki/Dog"
         self.assertFalse(fetch.check_if_link(term1))
         self.assertTrue(fetch.check_if_link(term2))
+
+class UtilsTestProcess(unittest.TestCase):
+    """Tests Functions contained in Utils.Process"""
+    def setUp(self) -> None:
+        """Executed prior to each test"""
+        app.config["TESTING"] = True
+        app.config["DEBUG"] = False
+        self.app = app.test_client()
+
+    def test_refrence_format():
+        """Tests that the function format_refrences returns properly formatted refrences list."""
+        pass
