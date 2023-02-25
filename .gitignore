@@ -1,4 +1,4 @@
-.env
+var.env
 venv/
 venv2/
 __pycache__
